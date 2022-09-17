@@ -14,9 +14,9 @@
 12.	If the discount value contains the "$" character, the value will be typed in the 'Invoice' sheet, in the 'E18' cell. Otherwise, the value "$0" will be added.
 13.	Next the 'RPA, Dev, Alex.Sushko@uipath.com" signature is added in each of the invoice sheets.
 14.	Finally, write the text to be used to prepare an Outlook draft email containing the updated invoices (the draft email can be found inside the 'Drafts' folder of the Outlook account in use).
-15. 	Post-processing: will delete the folder 'Invoices' from the project. If you'd like to show the output of the excel files, you can do so from 'drafts'.
-16. 	Post-processing: will delete the Emails received for demo.
-17. 	You will have to delete the draft.
+15. Post-processing: will delete the folder 'Invoices' from the project. If you'd like to show the output of the excel files, you can do so from 'drafts'.
+16. Post-processing: will delete the Emails received for demo.
+17. You will have to delete the draft.
 
 
 Activities Used:
