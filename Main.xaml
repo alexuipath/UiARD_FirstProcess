@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1131.2,3957.6" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:um="clr-namespace:UiPath.Mail;assembly=UiPath.Mail.Activities" xmlns:umab="clr-namespace:UiPath.Mail.Activities.Business;assembly=UiPath.Mail.Activities" xmlns:umabh="clr-namespace:UiPath.Mail.Activities.Business.HtmlEditor;assembly=UiPath.Mail.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1131.2,5568.8" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:um="clr-namespace:UiPath.Mail;assembly=UiPath.Mail.Activities" xmlns:umab="clr-namespace:UiPath.Mail.Activities.Business;assembly=UiPath.Mail.Activities" xmlns:umabh="clr-namespace:UiPath.Mail.Activities.Business.HtmlEditor;assembly=UiPath.Mail.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="72">
+    <scg:List x:TypeArguments="x:String" Capacity="80">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -41,6 +41,7 @@
       <x:String>UiPath.Mail.Activities.Utils</x:String>
       <x:String>UiPath.Mail.Activities.Business.HtmlEditor</x:String>
       <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Security</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -99,9 +100,10 @@
       <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
       <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="1. This workflow retrieves all unread emails, from the Outlook account in use, that have 'Course Invoices in the subject line.&#xD;&#xA;2. Emails retrieved are saved under the 'CourseEmails' list in MailMessage type of variable.&#xD;&#xA;3. Afterwards, attachments for each mail message retrieved are saved in a new project folder, titled 'Invoices'.&#xD;&#xA;4. It then identifies and copies the client code from each attachment and stores it under the 'ClientCode' variable.&#xD;&#xA;5. Next, using the Chrome browser, it accesses the &quot;https://acme-test.uipath.com/first-automation&quot; webpage, clicks 'Part 2' and types in the client code to get the discount value.&#xD;&#xA;6. The discount value is stored under the 'DiscountValue' variable (this operation is repeated for all stored client codes).&#xD;&#xA;7. If the discount value contains the &quot;$&quot; character, the value will be typed in the 'Invoice' sheet, in the 'E18' cell. Otherwise, the value &quot;$0&quot; will be added.&#xD;&#xA;8. Next the 'RPA, Dev, Alex.Sushko@uipath.com&quot; signature is added in each of the invoice sheets.&#xD;&#xA;9. Finally, write the text to be used to prepare an Outlook draft email containing the updated invoices (the draft email can be found inside the 'Drafts' folder of the Outlook account in use)." DisplayName="Parent Sequence for Saving Attachments and Creating a Draft Email in Outlook" sap:VirtualizedContainerService.HintSize="1021.6,3892.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="1. This workflow retrieves all unread emails, from the Outlook account in use, that have 'Course Invoices in the subject line.&#xD;&#xA;2. Emails retrieved are saved under the 'CourseEmails' list in MailMessage type of variable.&#xD;&#xA;3. Afterwards, attachments for each mail message retrieved are saved in a new project folder, titled 'Invoices'.&#xD;&#xA;4. It then identifies and copies the client code from each attachment and stores it under the 'ClientCode' variable.&#xD;&#xA;5. Next, using the Chrome browser, it accesses the &quot;https://acme-test.uipath.com/first-automation&quot; webpage, clicks 'Part 2' and types in the client code to get the discount value.&#xD;&#xA;6. The discount value is stored under the 'DiscountValue' variable (this operation is repeated for all stored client codes).&#xD;&#xA;7. If the discount value contains the &quot;$&quot; character, the value will be typed in the 'Invoice' sheet, in the 'E18' cell. Otherwise, the value &quot;$0&quot; will be added.&#xD;&#xA;8. Next the 'RPA, Dev, Alex.Sushko@uipath.com&quot; signature is added in each of the invoice sheets.&#xD;&#xA;9. Finally, write the text to be used to prepare an Outlook draft email containing the updated invoices (the draft email can be found inside the 'Drafts' folder of the Outlook account in use)." DisplayName="Parent Sequence for Saving Attachments and Creating a Draft Email in Outlook" sap:VirtualizedContainerService.HintSize="1021.6,5504" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="CourseEmails" />
       <Variable x:TypeArguments="x:Double" Name="ClientCode" />
@@ -111,6 +113,7 @@
         </Variable.Default>
       </Variable>
       <Variable x:TypeArguments="x:String" Name="DiscountValue" />
+      <Variable x:TypeArguments="x:String" Name="UserEmail" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -118,20 +121,98 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetOutlookMailMessages Account="{x:Null}" FilterByMessageIds="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Do not have to fill in the 'Account' property under 'Input' if using the default account in Outlook. If you have 2 or more accounts registered in Outlook (go to Outlook &gt; File &gt; Accounts), you will have to specify which account you're going to use.&#xD;&#xA;&#xD;&#xA;Additionally - the 'MarkedAsRead' property is unchecked for demo purposes." DisplayName="Get Outlook Mail Messages" Filter="[Subject] = 'Course Invoices'" GetAttachements="False" sap:VirtualizedContainerService.HintSize="980,258.4" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_1" MailFolder="Inbox" MarkAsRead="False" Messages="[CourseEmails]" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Top="30">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:GetOutlookMailMessages>
-    <ui:LogMessage sap2010:Annotation.AnnotationText="" DisplayName="Log Message Emails Retrieved" sap:VirtualizedContainerService.HintSize="980,124" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[CourseEmails.Count.ToString + &quot; mail messages have been retrieved.&quot;]">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:LogMessage>
+    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog Type Email" sap:VirtualizedContainerService.HintSize="980,241.6" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Outlook Email" Title="Please supply Outlook Email Address">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">[UserEmail]</OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Browser Chrome: ACME System 1 - Send Emails with Invoices" sap:VirtualizedContainerService.HintSize="980,1029.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="ae6ee453-d888-42e5-bf9d-7df7bd854f68" Version="V2" WindowResize="Maximize">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,812.8" sap2010:WorkflowViewState.IdRef="Sequence_10">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NClick ClickType="Single" DisplayName="Click 'Part 1'" sap:VirtualizedContainerService.HintSize="333.6,157.6" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="ae6ee453-d888-42e5-bf9d-7df7bd854f68" Version="V1">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://acme-test.uipath.com/first-automation/vendor" DesignTimeRectangle="702, 394, 59, 25" ElementType="Text" FriendlyName="'Part 1'" FullSelectorArgument="&lt;webctrl aaname='Part 1' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Part 1' tag='DIV' type='' class='submenu' check:innerText='PART 1' /&gt;" Guid="6fb8cf2c-3be8-45aa-ad97-701a948d6741" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAD8AAAAdCAYAAAAdO7TiAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAKmSURBVFhH7Za/i+JQEMfzZ6RduObgirMz5dqZUtjihC0WuUIsg4XYiVwhYSurI1xxoF1SLNgs5MpYHLjdNkK2sLCwsNgixRbfmzzHzQ9fdD1BhOQLU2Te5CWfefPmPQU5VgGfVxXweVUBn1cl4Rcj1BQFisTULxXUmkN4K46Nae00NnF3NtbsS8pDPzVfZCo+XzfQd57f3/V6srhdq42X/MY+BTSfBqXn8XMkOXy1BXNgJqzb1HEVjn3qwn3leKE17DsFpbIGVdFhzdmdEMN/H8L94ybNsWDcXAkY7X4mov2H1LdvSzReQr2T9FtTeaojrTG71+m/6NsfhpcEhgoeDTGR/stnD2luQSef4UzQVSkJgw1AUgyfMS/hYnRD44oBN2BXTMtxjcZqGC3Y8QEFCxcmJ1XYqfAhRDc17v+s0OQtTNYB3I4KRaXK2AE4BE/z/M4GPB6ev6dWYDx4m8SeDL+y0aBx9cd2dWcwv1J8c7LZr9O+qIyGky7HQ/CUuDaNiySyK6bj4em/vplwRUtYng4frGawbmllae/1p7y0DGs8bpeaIKn0dxvfHviA9uW4BY3G1bZLadjV/5R9pGPhM02FTk1p84PyMp8NwuaUbnwMn2lX0Ns2/DcOT+m88JJubzkenlcxyu0W6KRW68lEifzJxsfw8W7vDNG4puSVDdhz2XpHOi+8rDxTej/bsyxRERll/0r+chhbx+iFfRJdGLwPqxr+dAtW/Mxms3u6SEDU+Pbs+ZcR6mGfKPfhJe4PkS4Lns72CsXJz3QSbwmlalGaQu2BJ/njumicGp0isg1wUfDyphYXN0M6Gcyn8Hk/fHTJ0dD/u4t/OfCBK25y2fd4VqLxHYInUfmLb5dNOqWTOg98zlTA51UFfF5VwOdVBXw+BfwDyBUau7lcm+UAAAAASUVORK5CYII=" InformativeScreenshot="a1e3610146688bd4237df40ca4ecce00.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='ACME System 1 - Dashboard' /&gt;" SearchSteps="FuzzySelector, Image" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target DesignTimeRectangle="798, 385, 97, 34" ElementType="Text" FriendlyName="'Part 2'" FullSelectorArgument="&lt;webctrl aaname='Part 2' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Part 2' tag='A' type='' class='' check:innerText='PART 2' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGUAAAAmCAYAAADdsFUNAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAASHSURBVGhD7Zq9a9xIGMb3rzjULqQ4wxXZblXegg+yYLgsbBGBi7DVsVy1d4URbpYlhREpgklhhIsDbRGQC4NcHKwbc3JxIHMEnCKgFCm2cKHChSCBezKSRt7RavS5idH55oG3WGk+NPMbzfu+o21BqHESUBooAaWBqgjFh+d5Jc2ndYSqqjQU/+oQg0cttFrlrT08hHNLGxAqrXJQbiyMJf7EF5n0iwWPNiNUTuWgXKjcCS9nKmzajFA5lYKynA8SE93ZVaEdaBmmQnnMQhnA+EgbEiqlWlAG8yW9w9MSxlBA2URJKL6H68sFFudJM/d7zCS30Ns3U2VWZkLdZqH0oL5Jl7PfeSSWE+LpDop/paFf05nXNWlHE9EZRxSKAy3hB+7POgdO9AhCd4qgfDQw4EzYvdjQIF5IiJWA0kAJKA2UgNJANR/K5Yxfj1i728NoauKaE8F5J6Oo3HOTf8yTO+Y25OEYh+erJ7OnvHJpy8vhvLcGJkMZ7bCshK2dCYy36aeLoPhLOGt5xL3Z38v8fIVC4Z0iTJ5tQSL3pKc6XFo8kgfzOanTlcn9PvT39DIrCoWXc1lzDaMfpXDixqfRpLmnyb7V3Q6534Gyl7yuX/JP+nwyDpn01x7OYJyRfs4MqDtBHzJml8kZiKA0WRRK1gp0j/rh5KnnzMDe6+iTOpMTCyrJvbhhN4WSubJvbahBmrC9DjxSdMpR9rTChf6EtEV2hWRb9PqTZB8RFM+GztAusqzVEMmDfcyvx7VjO/8UuQAKPqQn1z0KTiDGsDwfiz2yGiUVi/XXsQgKkb0fbDMz7oFqJSg3FiY/SBj8kcZ7/VpO9VHLp+QNJH32VWAlfUpmn1caOuS+8ia+TxPh+JMBqR9scaOTNfSFUMgqDo6LHmukxbSqvSlZirbZ9T7+01D8D2R76gbtMJNDIUz+jF8NG7Pg+Gjd4edBuXWxeNEP2+kf8TavrwMl9jP942Qf9aBwXsOVXBhP+fW4tkH0FZlMnHH8PPztyjkInPKawy8as7QF5ZWTubVuCsV/p0Mhi0XaXfczNaGEIeN2Dz2edduc8jlWEko6+jokUYwDlw2Hb0yMSFlpb5GM6OgWl3D4dMxs9GXNZ+En761nGuwbWi5Dm0DxLmbohUB0bjhfE8pXtE19CqO73CTL2DeIjjnVLgkcghXc6hLnm3OCXReKOx+FeYr8q5V6Q2I9ICg0vJTG0JmcIzZzGoTOjMPPgkIU7/W8rSVWdSg+nJeBn5LQf+nk5mYPBwrJTXqkXOanALq13eUEOVCCCbSnQagqMVFdUlWhuHMlBKLMszCv9GCgcJ15QjQIIFm4dkV+5kIhipNHSYHJmfhKUOJ/A30/wCThF2NLbmURlKUJhZ2o+7Rdc3Mo/iLM3DPPuWKxDr8ICpF/oYbleX+TqgLFOx0nx5wyXvIYrKLfg1XEq/AtTWLyCaFYFArRZxfWdAS54r8g61q7O8LsrHh//T9qBUWoMRJQGigBpYESUBooAaWBehBQPv/2Mz799F3j7N9//qJPWE0Cyje0elCALxD2kbwtp08jAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NClick ClickType="Single" DisplayName="Click 'Notify Me'" sap:VirtualizedContainerService.HintSize="333.6,157.6" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="ae6ee453-d888-42e5-bf9d-7df7bd854f68" Version="V1">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://acme-test.uipath.com/first-automation" DesignTimeRectangle="664, 485, 164, 45" ElementType="Button" FriendlyName="'Notify Me'" FullSelectorArgument="&lt;webctrl id='notify' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl id='notify' tag='BUTTON' type='' class='c-form__button' aaname='Notify Me' check:innerText='Notify Me' /&gt;" Guid="bb34d392-5df2-43b9-b3c8-742e4ee0750f" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAKgAAAAxCAYAAABOIuI/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAMKSURBVHhe7ZjBbeMwEEW3ii1p20obaSBF+OwGcvYhBwN7D+DLYpFIoRSK/ByOLCVW4E/hf+AhkWUPqfBpKOdXryjEkaAKdSSoQh0JqlCnEPT/n99C3B2MBBV0YCSooAMjQQUdGAkq6MBIUEEHRoIKOjASVNCBkaCCDowEFXRgJKigAyNBBR0YCSrowEhQQQemTUEfj3HGIZdj/2bOvz2/xpOn/t2cW8tYo6j90HeXWPb8lN+Lcxnz/TGLMca89t2jec+m43GCaV/QkO5Qnr9V0Pdz/PiioFaoEOeGWY9T7/mheE++tikSlI+FLvIzgnrMdNVv4whq6qa5pUhQPipBQ6DTXBX0cIrnpuA2+tR38dUioyRGRm8OQ/7Fn47cy+LDGBfvGqb5hTmf/WusBDYduAUw+xEURJsTtO4+kHEhNxD070v8xT4/Qu1ZaXCMY/o9PcKkm+vUd9U1Ot13iunC7GCaF7Q7wMLHhXAFxc4JgmRps1B+pzOCrnkNRUzjW3GRsl6ah72ucGyvMR9D/VVj8oHZgaC4OPY4C+pLN1B3ttsEhfHh8/PjI6beJNj4mVL88hr9eczeLORgdiFosRBhwa5uf8UC+uduFTTPb+pc+Saw/3EoMfWwzqGsWQo682iCqa6bF8xOBA3gFp5yJ0Hx9aFzpbnlju5j68Hx9KUpzkmCMuMJGkhipWQh5rfY7bf4EZCym+otSlLXq64pvr5ui28TzK4Exdc/Ax0LOyw8j2UB8heJTQR1utr17X3AqWd2hqlGKSgewxeiub8TOZh9CRrICzUEBA1U3QiCdcoaIaMsXxXUjlfOxcerh6Jn+ayg3g2RUu0a3GB2J2i5UI4U1bMqdJyEWexxgb8uaDGWd75iYQwQrRb0k7lHgpbAtCloK4CgLW2x9wYjQX8M6HyrtncxgZGgm4NixjT0T3IGMBJ0c4ygDT4D3huMBBV0YCSooAMjQQUdGAkq6MBIUEEHRoIKOjASVNCBkaCCDowEFXRgJKigAyNBBR0YCSrowBSCKgpbJKhCnL7/ANRas0m5HeLKAAAAAElFTkSuQmCC" InformativeScreenshot="1de6ada5a2a817a45f5f44233657cf3d.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='ACME System 1 - Dashboard' /&gt;" SearchSteps="FuzzySelector, Image" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target DesignTimeRectangle="702, 337, 59, 25" ElementType="Text" FriendlyName="'Part 1'" FullSelectorArgument="&lt;webctrl aaname='Part 1' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Part 1' tag='DIV' type='' class='submenu' check:innerText='PART 1' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAD8AAAAdCAYAAAAdO7TiAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAK7SURBVFhH7Za/i9pgGMfzV5SsQpdCh7qZ8RwKZirCDRVuOKSDOKYO4ibSQcJNTiV0KOiWDAcuB+nWOBQ8utwieIODg4PDDYEe9Nsn8dH88I2eFURIvvAMed4nb97P8z7v80ZCipXBp1UZfFqVwadVGfxGsz7KkgRJYPLbIsq1HpwFx4a0tKqruGsTS/ZF5aATmy8wGW8uquhYD5t3nbYobtvKgzm/sUsuzadAajv8HEgMX6pD7+oRa9VU5Lyx1y3YTxzvawnzWkK+oECWVBgTdkfE8J96sH/YUbMMaJc5H0a5GfvR09vYt6/yNJ5HpRn1GyNxqgMtMb5RaV307RfDCwI9uXeaP5H6bcoe0sSASj7NGqIlUxK6K4CoGD5hXsJF/5LGJQ22y66Q5oMyjZXRn7HjBXJnNnROqm/HwnsQrdj49GuRJq9juHRhN2VIMlXGFsA+eJrnezLg4fD8PbkI7dZZJfZo+IWJKo3LX9a7O4b+juJrw9V5HXX8yqha8XLcB0+Ja9C4n0R2hXQ4PK3row7bbwnz4+HdxRjGFe0snb3OiLeWYbW79VYTJJX+duPbAe/SuRzUodC43LApDdv6n7IPdCh8oslQqSmtFigu83HXa07xxsfwiZaD2jAxfebwmE4LL+j2huXgYRGiXB+BZmy37nXkyR9tfAwf7vZWD9ULSl5BgzkR7Xeg08KLyjOmzd2eZJGKSCj7J/IXvNgK+o/sE+jM4KcwSt6i6zDCdzab2Vb9BASNb8eZf+yj4vWJQgdO5P8h0HnB091epDjxnU7iIyGVDEqTpx3wpOmg4jdOhW4R0QE4K3hxUwuLmyHdDPq997wbPvjJUdD5tY1/PvCu7f/JJf/HsyKNbx88icrf/3ZBp1s6qtPAp0wZfFqVwadVGXxatRP+7++f+PP+1dnZ8+cPvMJjBPwDeP/b4npkwB0AAAAASUVORK5CYII=" SearchSteps="FuzzySelector, Image" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'INPUT input'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="333.6,218.4" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="ae6ee453-d888-42e5-bf9d-7df7bd854f68" Text="[UserEmail]" Version="V1">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://acme-test.uipath.com/first-automation" DesignTimeRectangle="664, 486, 441, 45" ElementType="InputBox" FriendlyName="'INPUT input'" FullSelectorArgument="&lt;webctrl tag='INPUT' type='email' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='email' class='c-form__input' aaname='' /&gt;" Guid="930ce67f-b4a3-48b4-a105-03f8c965a2b0" ImageBase64="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" InformativeScreenshot="a9d20d48a043b1caea078bf8c7071eae.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='ACME System 1 - Dashboard' /&gt;" SearchSteps="FuzzySelector, Image" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target DesignTimeRectangle="1104, 485, 164, 45" ElementType="Button" FriendlyName="'Send'" FullSelectorArgument="&lt;webctrl tag='BUTTON' type='submit' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='BUTTON' type='submit' class='c-form__button' aaname='Send' check:innerText='Send' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAKgAAAAxCAYAAABOIuI/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAIUSURBVHhe7Z3BbcJAFAWpIiWlJK5pgwYognMayJkjFSBxi4ANTrz28/rbgUiQJ3ZGmotZRyEa/q65ZJEAjCFQsIZAwRoCBWsWy+UyNTZ8vr4g/rvKYIJGixEfrUKgaKdCoGinQqBop0KgaKdCoGinQqBop0KgaKdCoGinQqBop0KgaKdCoGinQqBop0KgF48f+/YvIBze0zFY+xjX6dz+GunjLXj9uVUqD/QtnQ/tmw/ZplN4370l0EzdgW627TufYbeO772rBJqpOtB+a9+n80pf08laTNHVe3s9U05ZubeJu/wQBMGddu1r3zQ/j0AzBJq5ZlJOTlwN/Ldjw4UuulvW1qNS+RlUJtWA6Owpa7uYi2lZXrtw3rT36+TND2Aa/FS0BNoTLX56R1u2IpOxi6k4DnTXc9QSWPFNQLeVt9f7rX3mGEGgPdHiepyfpuFXUQNyuNFU/XEy0NFXWpxBMwQ6oQbZbNME+jiVigOVCEaBXCzPh1Nb/Mg/BMoWP1CpeoL2gcyRg4wekqIpeH2ggw9Bt1bubyDQnmjxczt17hQksrltvntavyXQMsYIAu2JFtdgHN7EVj566i/X3RJocf2b5udxBs0QKNqpECjaqRAo2qkQKNqpECjaqRAo2qkQKNqpECjaqRAo2qkQKNqpECjaqRAo2qkQKNqpECjaqRAo2qkQKNqpDAIFcGPwvzoBvEjpCz6rB/XMnBo7AAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <Delay sap2010:Annotation.AnnotationText="You have 15 seconds to solve captcha and hit 'Send'" DisplayName=" Delay 15s to Solve Captcha" Duration="00:00:15" sap:VirtualizedContainerService.HintSize="333.6,66.4" sap2010:WorkflowViewState.IdRef="Delay_1">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </Delay>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-9, -9, 2578, 1420" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAReSURBVFhHvZdtbFNlFMcf3SxUfI0miLAEWdShCV+EGD9oUJBJAobwQb8IGklkKEQkcy8MZK90tGsnZbxsvkDmxsYkS8QFPhDYLIy+sbv2rhW3dYPFbGyVbYwJJMu2wzm3Prd317ZCc+uHf9vnPC/n13PPc57nMrZX6EPdQo39zyKf1wgAZJWQ2sJtzYVrkw+lDT9G5UbBZWB5TmC7XIlRHgnXJ4hSyecwAYwxAzawM/1EoKFSvLEh97eBjOw4xedmNg9k7LSFRO2sloEMg2Po0x3n+4tYMUaiUIr0SAiAiL5xwfrGqyvSt69hiZZuXzv6cwP+cQVAoRveqQtsizRBS33vHV6cTAD5agA0rG7o+SLSpHg0ODG9aGlFR+vy+kCl0l4p3HgpKkC6RgAA8GxSqQfY5zZgm22wq3XwFO+zOIeiA6z5OQyQctBXpTd6BdwZwrsNPVZuV2vJD3/YWOFl9xNmr5hULGwiW8v1OxvZpmZg5SKw7a2Y8e3Ax5c5g9EB1p4MA+hNnjssH7dlth2WHusMcrta8yt8wHLswIpwbEHbUW5P/e4KsK0XJDX2jBVw+30DPGkR7awIt8pOJ7xR03WO29VadNg/Ke1tLDJPfyvuUfbtbu5fn+MIvqK0HYmVAzMAzKJTAdCsXEQpBJimMQQwx+TNjzRm6PbUQ/x3lWc4cQC60nYZYOEhP+jxsTxqbAfMp3JurxZHNAY44p/iAHpFBB63eIF9jbmBJVhn9Bi5vdanPYAcASUA/mtgu7H24+H2nLVDttdoDZAaBWAB7Q4CwLo/d38cAE9Z7hsg4iOIC+B9BcDsfR6XdGrhFltW3XWe29VKq/JPSAAGHFsiyPs9LgBlJcQk8mGFA5ZlhxX1gTPcrlbKobCjOWavidvjAnjreEAG+Ph03yn21SVgmZfg9druAW5XK9mI2Y5HOct2gFUIbuH25w/EAfBmTRjgqH9ks1RK6VDBx9B5a+IF3sc1DbCE5TqoBEvb7drfE/N431xrx4MDrKwPA5D0Zeg8FxehwXvckHfh+icmVzCt7vfRxTkt/VmMzopinLv1IrxW03VTOTdaBKpjAbynOo6b/hzfwj46hxmO/ZQPGGZdGYac2plYZOgOSU4+s8HoFKxSzk2hHKBHg3VgntUnnxExI6AGIH3Y1NfGdmAufInHKk2ik48umBgRsusK3LDhbL9c6biYAZ1suyglMUbpILfX+R8QgNTUO77sg8beX58xeuAxrO3JeL7Pt4jjG3+5+lPf3UldpDlvH+++mXqgY/LlSj8srw1kcfsxMcZhFA1ASx0WYgDglSzhl9IfPcNpUQHwUro20iStNQsf47+v5ZjN6072lpy4Mrqw3BV81eSYKSPKjCq1D0ptc4Qx/6UK4a8XjY6hdcmUoJi86FsCCL2aIUQSdszGRHsYvylMWusRFNuLotoReh2UXs1CDXpXo9cl2l5ElwjxtblPEn50o0ZQQUmGf74ToZlro0+h8x4tMHhuvyezngAAAABJRU5ErkJggg==" InformativeScreenshot="77568551764f6e9c6f73d78bdbee2469.png" Selector="&lt;html app='chrome.exe' title='ACME System 1 - Dashboard' /&gt;" Url="https://acme-test.uipath.com/first-automation" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" DisplayName="Do While Email Count &lt; 4" sap:VirtualizedContainerService.HintSize="980,682.4" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+      <ui:InterruptibleDoWhile.Body>
+        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="375.2,515.2" sap2010:WorkflowViewState.IdRef="Sequence_11">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:GetOutlookMailMessages Account="{x:Null}" FilterByMessageIds="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="Do not have to fill in the 'Account' property under 'Input' if using the default account in Outlook. If you have 2 or more accounts registered in Outlook (go to Outlook &gt; File &gt; Accounts), you will have to specify which account you're going to use.&#xD;&#xA;&#xD;&#xA;Additionally - the 'MarkedAsRead' property is unchecked for demo purposes." DisplayName="Get Outlook Mail Messages" Filter="[Subject] = 'Course Invoices'" GetAttachements="False" sap:VirtualizedContainerService.HintSize="333.6,258.4" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_1" MailFolder="Inbox" MarkAsRead="False" Messages="[CourseEmails]" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Top="30">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:GetOutlookMailMessages>
+          <ui:LogMessage sap2010:Annotation.AnnotationText="" DisplayName="Log Message Emails Retrieved" sap:VirtualizedContainerService.HintSize="333.6,124" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[CourseEmails.Count.ToString + &quot; mail messages have been retrieved.&quot;]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:LogMessage>
+        </Sequence>
+      </ui:InterruptibleDoWhile.Body>
+      <ui:InterruptibleDoWhile.Condition>
+        <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="CourseEmails.Count &lt; 4" />
+      </ui:InterruptibleDoWhile.Condition>
+    </ui:InterruptibleDoWhile>
     <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each Retrieved Email Stored under CourseEmails Variable" sap:VirtualizedContainerService.HintSize="980,2328" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[CourseEmails]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="snm:MailMessage">
@@ -169,7 +250,7 @@
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Browser Chrome: ACME System 1 - Dashboard" sap:VirtualizedContainerService.HintSize="786.4,1454.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="5392b314-d0ac-4d11-8615-59e218e0d3e0" Version="V2">
+                      <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Browser Chrome: ACME System 1 - Dashboard" sap:VirtualizedContainerService.HintSize="786.4,1454.4" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="5392b314-d0ac-4d11-8615-59e218e0d3e0" Version="V2" WindowResize="Maximize">
                         <uix:NApplicationCard.Body>
                           <ActivityAction x:TypeArguments="x:Object">
                             <ActivityAction.Argument>
