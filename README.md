@@ -1,7 +1,7 @@
 # UiARD_FirstProcess
 
 1.	This workflow retrieves all unread emails, from the Outlook account in use, that have 'Course Invoices in the subject line.
-2.	At the beginning of this process, an ‘Input Dialog’ message will appear requesting your email address.
+2.	At the beginning of this process, an ‘Input Dialog’ message will appear requesting your email address and folder path to save attachments.
 3.	It will then go to the "https://acme-test.uipath.com/first-automation" webpage, ‘Part 1’ and click ‘Notify Me’.
 4.	It will automatically input your email address.
 5.	You will have to solve the Captcha and then click ‘Submit’.

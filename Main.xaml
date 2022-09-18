@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1131.2,6156" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:um="clr-namespace:UiPath.Mail;assembly=UiPath.Mail.Activities" xmlns:umab="clr-namespace:UiPath.Mail.Activities.Business;assembly=UiPath.Mail.Activities" xmlns:umabh="clr-namespace:UiPath.Mail.Activities.Business.HtmlEditor;assembly=UiPath.Mail.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1131.2,6563.2" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:um="clr-namespace:UiPath.Mail;assembly=UiPath.Mail.Activities" xmlns:umab="clr-namespace:UiPath.Mail.Activities.Business;assembly=UiPath.Mail.Activities" xmlns:umabh="clr-namespace:UiPath.Mail.Activities.Business.HtmlEditor;assembly=UiPath.Mail.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="80">
+    <scg:List x:TypeArguments="x:String" Capacity="41">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -45,7 +45,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <sco:Collection x:TypeArguments="AssemblyReference">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="55">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -101,9 +101,9 @@
       <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
       <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
       <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
-    </sco:Collection>
+    </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="1.  This workflow retrieves all unread emails, from the Outlook account in use, that have 'Course Invoices in the subject line.&#xD;&#xA;2. At the beginning of this process, an ‘Input Dialog’ message will appear requesting your email address.&#xD;&#xA;3. It will then go to the &quot;https://acme-test.uipath.com/first-automation&quot; webpage, ‘Part 1’ and click ‘Notify Me’.&#xD;&#xA;4. It will automatically input your email address.&#xD;&#xA;5. You will have to solve the Captcha and then click ‘Submit’.&#xD;&#xA;6. The automation will keep running the ‘Get Outlook Mail Messages’ activity until there are 4 invoices in your email account.&#xD;&#xA;7. Emails retrieved are saved under the 'CourseEmails' list in MailMessage type of variable.&#xD;&#xA;8. Afterwards, attachments for each mail message retrieved are saved in a new project folder, titled 'Invoices'.&#xD;&#xA;9. It then identifies and copies the client code from each attachment and stores it under the 'ClientCode' variable.&#xD;&#xA;10. Next, using the Chrome browser, it accesses the &quot;https://acme-test.uipath.com/first-automation&quot; webpage, clicks 'Part 2' and types in the client code to get the discount value.&#xD;&#xA;11. The discount value is stored under the 'DiscountValue' variable (this operation is repeated for all stored client codes).&#xD;&#xA;12. If the discount value contains the &quot;$&quot; character, the value will be typed in the 'Invoice' sheet, in the 'E18' cell. Otherwise, the value &quot;$0&quot; will be added.&#xD;&#xA;13. Next the 'RPA, Dev, Alex.Sushko@uipath.com&quot; signature is added in each of the invoice sheets.&#xD;&#xA;14. Finally, write the text to be used to prepare an Outlook draft email containing the updated invoices (the draft email can be found inside the 'Drafts' folder of the Outlook account in use).&#xD;&#xA;15. Post-processing: will delete the folder 'Invoices' from the project. If you'd like to show the output of the excel files, you can do so from 'drafts'.&#xD;&#xA;16. Post-processing: will delete the Emails received for demo.&#xD;&#xA;17. You will have to delete the draft." DisplayName="Parent Sequence for Saving Attachments and Creating a Draft Email in Outlook" sap:VirtualizedContainerService.HintSize="1021.6,6091.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="1.  This workflow retrieves all unread emails, from the Outlook account in use, that have 'Course Invoices in the subject line.&#xD;&#xA;2. At the beginning of this process, an ‘Input Dialog’ message will appear requesting your email address and folder path to save attachments.&#xD;&#xA;3. It will then go to the &quot;https://acme-test.uipath.com/first-automation&quot; webpage, ‘Part 1’ and click ‘Notify Me’.&#xD;&#xA;4. It will automatically input your email address.&#xD;&#xA;5. You will have to solve the Captcha and then click ‘Submit’.&#xD;&#xA;6. The automation will keep running the ‘Get Outlook Mail Messages’ activity until there are 4 invoices in your email account.&#xD;&#xA;7. Emails retrieved are saved under the 'CourseEmails' list in MailMessage type of variable.&#xD;&#xA;8. Afterwards, attachments for each mail message retrieved are saved in a new project folder, titled 'Invoices'.&#xD;&#xA;9. It then identifies and copies the client code from each attachment and stores it under the 'ClientCode' variable.&#xD;&#xA;10. Next, using the Chrome browser, it accesses the &quot;https://acme-test.uipath.com/first-automation&quot; webpage, clicks 'Part 2' and types in the client code to get the discount value.&#xD;&#xA;11. The discount value is stored under the 'DiscountValue' variable (this operation is repeated for all stored client codes).&#xD;&#xA;12. If the discount value contains the &quot;$&quot; character, the value will be typed in the 'Invoice' sheet, in the 'E18' cell. Otherwise, the value &quot;$0&quot; will be added.&#xD;&#xA;13. Next the 'RPA, Dev, Alex.Sushko@uipath.com&quot; signature is added in each of the invoice sheets.&#xD;&#xA;14. Finally, write the text to be used to prepare an Outlook draft email containing the updated invoices (the draft email can be found inside the 'Drafts' folder of the Outlook account in use).&#xD;&#xA;15. Post-processing: will delete the folder 'Invoices' from the project. If you'd like to show the output of the excel files, you can do so from 'drafts'.&#xD;&#xA;16. Post-processing: will delete the Emails received for demo.&#xD;&#xA;17. You will have to delete the draft." DisplayName="Parent Sequence for Saving Attachments and Creating a Draft Email in Outlook" sap:VirtualizedContainerService.HintSize="1021.6,6498.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="CourseEmails" />
       <Variable x:TypeArguments="x:Double" Name="ClientCode" />
@@ -114,6 +114,7 @@
       </Variable>
       <Variable x:TypeArguments="x:String" Name="DiscountValue" />
       <Variable x:TypeArguments="x:String" Name="UserEmail" />
+      <Variable x:TypeArguments="x:String" Name="UserFolderPath" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -121,9 +122,14 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog Type Email" sap:VirtualizedContainerService.HintSize="980,241.6" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Outlook Email" Title="Please supply Outlook Email Address">
+    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog Type Email" sap:VirtualizedContainerService.HintSize="980,241.6" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="Outlook Email - No Quotes" Title="Please supply Outlook Email Address">
       <ui:InputDialog.Result>
         <OutArgument x:TypeArguments="x:String">[UserEmail]</OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog Folder Path" sap:VirtualizedContainerService.HintSize="980,241.6" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="False" Label="Full Folder Path - No Quotes - \ at the end" Title="Please supply folder path for invoices">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">[UserFolderPath]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
     <uix:NApplicationCard WebDriverMode="{x:Null}" AttachMode="ByInstance" DisplayName="Use Browser Chrome: ACME System 1 - Send Emails with Invoices" sap:VirtualizedContainerService.HintSize="980,1029.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="ae6ee453-d888-42e5-bf9d-7df7bd854f68" Version="V2" WindowResize="Maximize">
@@ -171,7 +177,7 @@
                 </uix:TargetAnchorable>
               </uix:NTypeInto.Target>
             </uix:NTypeInto>
-            <Delay sap2010:Annotation.AnnotationText="You have 15 seconds to solve captcha and hit 'Send'" DisplayName=" Delay 15s to Solve Captcha" Duration="00:00:15" sap:VirtualizedContainerService.HintSize="333.6,66.4" sap2010:WorkflowViewState.IdRef="Delay_1">
+            <Delay sap2010:Annotation.AnnotationText="You have 20 seconds to solve captcha and hit 'Send'" DisplayName=" Delay 20s to Solve Captcha" Duration="00:00:20" sap:VirtualizedContainerService.HintSize="333.6,66.4" sap2010:WorkflowViewState.IdRef="Delay_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -185,9 +191,9 @@
         <uix:TargetApp Area="-9, -9, 2578, 1420" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAReSURBVFhHvZdtbFNlFMcf3SxUfI0miLAEWdShCV+EGD9oUJBJAobwQb8IGklkKEQkcy8MZK90tGsnZbxsvkDmxsYkS8QFPhDYLIy+sbv2rhW3dYPFbGyVbYwJJMu2wzm3Prd317ZCc+uHf9vnPC/n13PPc57nMrZX6EPdQo39zyKf1wgAZJWQ2sJtzYVrkw+lDT9G5UbBZWB5TmC7XIlRHgnXJ4hSyecwAYwxAzawM/1EoKFSvLEh97eBjOw4xedmNg9k7LSFRO2sloEMg2Po0x3n+4tYMUaiUIr0SAiAiL5xwfrGqyvSt69hiZZuXzv6cwP+cQVAoRveqQtsizRBS33vHV6cTAD5agA0rG7o+SLSpHg0ODG9aGlFR+vy+kCl0l4p3HgpKkC6RgAA8GxSqQfY5zZgm22wq3XwFO+zOIeiA6z5OQyQctBXpTd6BdwZwrsNPVZuV2vJD3/YWOFl9xNmr5hULGwiW8v1OxvZpmZg5SKw7a2Y8e3Ax5c5g9EB1p4MA+hNnjssH7dlth2WHusMcrta8yt8wHLswIpwbEHbUW5P/e4KsK0XJDX2jBVw+30DPGkR7awIt8pOJ7xR03WO29VadNg/Ke1tLDJPfyvuUfbtbu5fn+MIvqK0HYmVAzMAzKJTAdCsXEQpBJimMQQwx+TNjzRm6PbUQ/x3lWc4cQC60nYZYOEhP+jxsTxqbAfMp3JurxZHNAY44p/iAHpFBB63eIF9jbmBJVhn9Bi5vdanPYAcASUA/mtgu7H24+H2nLVDttdoDZAaBWAB7Q4CwLo/d38cAE9Z7hsg4iOIC+B9BcDsfR6XdGrhFltW3XWe29VKq/JPSAAGHFsiyPs9LgBlJcQk8mGFA5ZlhxX1gTPcrlbKobCjOWavidvjAnjreEAG+Ph03yn21SVgmZfg9druAW5XK9mI2Y5HOct2gFUIbuH25w/EAfBmTRjgqH9ks1RK6VDBx9B5a+IF3sc1DbCE5TqoBEvb7drfE/N431xrx4MDrKwPA5D0Zeg8FxehwXvckHfh+icmVzCt7vfRxTkt/VmMzopinLv1IrxW03VTOTdaBKpjAbynOo6b/hzfwj46hxmO/ZQPGGZdGYac2plYZOgOSU4+s8HoFKxSzk2hHKBHg3VgntUnnxExI6AGIH3Y1NfGdmAufInHKk2ik48umBgRsusK3LDhbL9c6biYAZ1suyglMUbpILfX+R8QgNTUO77sg8beX58xeuAxrO3JeL7Pt4jjG3+5+lPf3UldpDlvH+++mXqgY/LlSj8srw1kcfsxMcZhFA1ASx0WYgDglSzhl9IfPcNpUQHwUro20iStNQsf47+v5ZjN6072lpy4Mrqw3BV81eSYKSPKjCq1D0ptc4Qx/6UK4a8XjY6hdcmUoJi86FsCCL2aIUQSdszGRHsYvylMWusRFNuLotoReh2UXs1CDXpXo9cl2l5ElwjxtblPEn50o0ZQQUmGf74ToZlro0+h8x4tMHhuvyezngAAAABJRU5ErkJggg==" InformativeScreenshot="77568551764f6e9c6f73d78bdbee2469.png" Selector="&lt;html app='chrome.exe' title='ACME System 1 - Dashboard' /&gt;" Url="https://acme-test.uipath.com/first-automation" />
       </uix:NApplicationCard.TargetApp>
     </uix:NApplicationCard>
-    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" DisplayName="Do While Email Count &lt; 4" sap:VirtualizedContainerService.HintSize="980,682.4" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" DisplayName="Do While Email Count &lt; 4" sap:VirtualizedContainerService.HintSize="980,808" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
       <ui:InterruptibleDoWhile.Body>
-        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="375.2,515.2" sap2010:WorkflowViewState.IdRef="Sequence_11">
+        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="375.2,640.8" sap2010:WorkflowViewState.IdRef="Sequence_11">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -207,6 +213,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
+          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="333.6,85.6" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[&quot;Waiting for invoices to arrive... Current Count: &quot; + CourseEmails.Count.ToString]" />
         </Sequence>
       </ui:InterruptibleDoWhile.Body>
       <ui:InterruptibleDoWhile.Condition>
@@ -225,8 +232,8 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:SaveMailAttachments Attachments="{x:Null}" DisplayName="Save Attachments from 'RetrievedEmail'" ExcludeInlineAttachments="False" FolderPath="Data\Invoices\" sap:VirtualizedContainerService.HintSize="903.2,88" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[RetrievedEmail]" OverwriteExisting="False" />
-            <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope For Each Invoice Sheet" sap:VirtualizedContainerService.HintSize="903.2,1982.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[&quot;Data\Invoices\&quot; + RetrievedEmail.Attachments.First.Name]">
+            <ui:SaveMailAttachments Attachments="{x:Null}" DisplayName="Save Attachments from 'RetrievedEmail'" ExcludeInlineAttachments="False" FolderPath="[UserFolderPath]" sap:VirtualizedContainerService.HintSize="903.2,88" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[RetrievedEmail]" OverwriteExisting="False" />
+            <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope For Each Invoice Sheet" sap:VirtualizedContainerService.HintSize="903.2,1982.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[UserFolderPath + RetrievedEmail.Attachments.First.Name]">
               <ui:ExcelApplicationScope.Body>
                 <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                   <ActivityAction.Argument>
@@ -350,7 +357,7 @@
             <umab:SendMailX Bcc="{x:Null}" Cc="{x:Null}" HtmlBodyFromText="{x:Null}" ReplyTo="{x:Null}" Account="[Outlook]" Body="[&quot;Hello!&quot; + vbLf + vbLf + &quot;I have completed processing &quot; + CourseEmails.Count.ToString + &quot; emails.&quot; + vbLf + vbLf + &quot;Robot&quot;]" BodyType="Text" DisplayName="Send Email to create a draft email with attachments in Outlook" sap:VirtualizedContainerService.HintSize="433.6,397.6" sap2010:WorkflowViewState.IdRef="SendMailX_1" Importance="Normal" MaxBodyDocumentSizeMB="2" Sensitivity="Normal" Subject="Invoices Processed" To="[Outlook.SelectedAccount]" UseDocumentAsBody="False">
               <umab:SendMailX.Files>
                 <scg:List x:TypeArguments="InArgument(x:String)" Capacity="1">
-                  <InArgument x:TypeArguments="x:String">Data\Invoices</InArgument>
+                  <InArgument x:TypeArguments="x:String">[UserFolderPath]</InArgument>
                 </scg:List>
               </umab:SendMailX.Files>
               <umab:SendMailX.HtmlBodyFromFile>
@@ -369,7 +376,7 @@
       </umab:OutlookApplicationCard.Body>
     </umab:OutlookApplicationCard>
     <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box to Inform About the New Draft in Outlook" sap:VirtualizedContainerService.HintSize="980,85.6" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;Check your 'Drafts' folder in Outlook for the newly created draft.&quot;]" />
-    <ui:DeleteFolderX DisplayName="Delete Folder" sap:VirtualizedContainerService.HintSize="980,80.8" sap2010:WorkflowViewState.IdRef="DeleteFolderX_1" Path="C:\Users\alex.sushko\OneDrive - UiPath\Desktop\UiPathDemosGit\UiARD_FirstProcess\Data\Invoices" Recursive="True" />
+    <ui:DeleteFolderX DisplayName="Delete Folder" sap:VirtualizedContainerService.HintSize="980,80.8" sap2010:WorkflowViewState.IdRef="DeleteFolderX_1" Path="[UserFolderPath]" Recursive="True" />
     <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="980,298.4" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[CourseEmails]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="snm:MailMessage">
