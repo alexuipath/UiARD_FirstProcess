@@ -37,3 +37,11 @@ Activities Used:
 - Message Box
 - Delete Folder
 - Delete Outlook Mail Message
+
+Needed Enhancements:
+- Remove 'Delay' For UI Element Appears
+- Create Test Project
+- Create Test Cases
+- Set up CI/CD Pipeline
+- Encompass around DU, Invoice ML process
+
